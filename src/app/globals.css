@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --ink: #33150d;
+  --muted: #775036;
+  --paper: #fffaf0;
+  --cream: #fff3d8;
+  --saffron: #f4bd4a;
+  --chili: #d94f20;
+  --leaf: #126b58;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  background:
+    linear-gradient(rgba(255, 250, 240, 0.84), rgba(255, 250, 240, 0.84)),
+    radial-gradient(circle at 12% 8%, rgba(244, 189, 74, 0.38), transparent 26rem),
+    radial-gradient(circle at 92% 18%, rgba(18, 107, 88, 0.12), transparent 24rem),
+    linear-gradient(180deg, #fffaf0 0%, #fff0cf 48%, #fff7e6 100%);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+body::before {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: 0.32;
+  background-image:
+    linear-gradient(30deg, rgba(64, 29, 18, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(64, 29, 18, 0.04) 87.5%, rgba(64, 29, 18, 0.04)),
+    linear-gradient(150deg, rgba(64, 29, 18, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(64, 29, 18, 0.04) 87.5%, rgba(64, 29, 18, 0.04));
+  background-size: 28px 49px;
+}
+
+.site-main {
+  min-height: 72svh;
+  padding-bottom: 5.75rem;
+  overflow-x: clip;
+}
+
+.mobile-safe-width {
+  width: 100%;
+  max-width: min(100%, 21.5rem);
+}
+
+@media (min-width: 640px) {
+  .site-main {
+    padding-bottom: 0;
+  }
+
+  .mobile-safe-width {
+    max-width: 100%;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+iframe {
+  border: 0;
+}
+
+::selection {
+  background: #f6d58c;
+  color: #3a1a12;
+}
+
+.page-transition {
+  animation: page-enter 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.nav-link,
+.premium-button,
+.interactive-card {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.nav-link:hover,
+.premium-button:hover,
+.interactive-card:hover {
+  transform: translateY(-2px);
+}
+
+.nav-link:active,
+.premium-button:active,
+.interactive-card:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.premium-button {
+  box-shadow: 0 16px 36px rgba(64, 29, 18, 0.12);
+}
+
+.premium-button:hover {
+  box-shadow: 0 22px 48px rgba(217, 79, 32, 0.22);
+}
+
+.interactive-card:hover {
+  box-shadow: 0 24px 56px rgba(64, 29, 18, 0.14);
+}
+
+.mobile-contact-actions {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: calc(env(safe-area-inset-bottom) + 5.65rem);
+  z-index: 50;
+  display: grid;
+  gap: 0.65rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.mobile-contact-actions-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-contact-button {
+  display: grid;
+  width: 3.35rem;
+  height: 3.35rem;
+  place-items: center;
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(64, 29, 18, 0.18);
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.mobile-contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(64, 29, 18, 0.24);
+}
+
+.mobile-contact-button:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.order-floating-button {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 58;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: calc(100vw - 2rem);
+  border-radius: 999px;
+  background: #33150d;
+  padding: 0.85rem 1rem;
+  color: #fff8e8;
+  font-size: 0.86rem;
+  font-weight: 900;
+  box-shadow: 0 18px 48px rgba(64, 29, 18, 0.24);
+}
+
+.order-floating-button:hover {
+  background: #d94f20;
+}
+
+.order-floating-count {
+  display: grid;
+  min-width: 1.65rem;
+  height: 1.65rem;
+  place-items: center;
+  border-radius: 999px;
+  background: #f6d58c;
+  color: #33150d;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.order-panel-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.order-panel-shell-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.order-panel {
+  position: absolute;
+  right: max(0.75rem, env(safe-area-inset-right));
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  display: flex;
+  width: min(28rem, calc(100vw - 1.5rem));
+  max-height: min(42rem, calc(100svh - 1.5rem));
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 1.45rem;
+  background: rgba(255, 250, 240, 0.98);
+  box-shadow: 0 28px 80px rgba(43, 18, 12, 0.28);
+  transform: translateY(1rem) scale(0.98);
+  transition: transform 220ms ease;
+}
+
+.order-panel-shell-open .order-panel {
+  transform: translateY(0) scale(1);
+}
+
+@media (min-width: 640px) {
+  .mobile-contact-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .order-floating-button {
+    right: auto;
+    left: max(1rem, env(safe-area-inset-left));
+    bottom: calc(env(safe-area-inset-bottom) + 5.65rem);
+  }
+}
+
+.hero-plate {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.94) 0 30%, transparent 31%),
+    radial-gradient(circle at 52% 48%, #f6d58c 0 45%, transparent 46%),
+    conic-gradient(from 30deg, #d94f20, #f4bd4a, #126b58, #f6d58c, #d94f20);
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.992);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
