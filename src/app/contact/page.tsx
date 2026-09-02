@@ -3,78 +3,37 @@ import { FindUsCards } from "@/components/FindUsCards";
 import { Section } from "@/components/Section";
 import { restaurant } from "@/lib/restaurant";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: `Contact ${restaurant.name} by phone or WhatsApp-style message.`,
-};
+export const metadata: Metadata = { title: "Contact", description: `Contact ${restaurant.name} for orders, pickup and restaurant questions.` };
 
 export default function ContactPage() {
   return (
-    <Section className="min-h-[72svh]">
-      <div className="mx-auto w-full max-w-4xl overflow-hidden">
-        <div className="mx-auto w-full max-w-2xl text-center">
-          <p className="text-sm font-black uppercase tracking-[0.16em] text-[#9b341f]">
-            Contact
-          </p>
-          <h1 className="mt-3 text-4xl font-black tracking-tight text-[#33150d] [overflow-wrap:anywhere] sm:text-6xl">
-            Order, pickup or ask us anything
-          </h1>
-          <p className="mt-5 text-base font-semibold leading-7 text-[#775036] [overflow-wrap:anywhere] sm:text-lg sm:leading-8">
-            For today&apos;s hours, table questions, pickup or delivery, contact
-            the restaurant directly.
-          </p>
+    <>
+      <section className="border-b border-[#24140d]/10 bg-[#20120c] text-white">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+          <p className="eyebrow !text-[#e8b24e]">Contact</p>
+          <h1 className="display-serif mt-4 max-w-4xl text-6xl leading-[.9] sm:text-7xl">Talk to the kitchen.</h1>
+          <p className="mt-6 max-w-xl text-base leading-7 text-[#cdbcae]">For pickup, today’s hours, table questions or help choosing from the menu, contact Shanddar MoMo directly.</p>
+        </div>
+      </section>
 
-          <div className="mt-9 grid w-full max-w-full gap-4">
-            <a
-              href={`tel:${restaurant.phoneHref}`}
-              className="premium-button min-w-0 rounded-full bg-[#d94f20] px-5 py-4 text-base font-black text-white hover:bg-[#c54419] sm:px-6 sm:text-lg"
-            >
-              Call {restaurant.phoneDisplay}
-            </a>
-            <a
-              href={restaurant.whatsappHref}
-              className="premium-button min-w-0 rounded-full bg-[#126b58] px-5 py-4 text-base font-black text-white hover:bg-[#0e5446] sm:px-6 sm:text-lg"
-            >
-              Message on WhatsApp
-            </a>
-            <div className="rounded-[1.35rem] border border-white/70 bg-white/88 px-6 py-4 text-left shadow-[0_12px_30px_rgba(64,29,18,0.08)] ring-1 ring-amber-950/5">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9b341f]">
-                Email
-              </p>
-              <p className="mt-1 text-base font-black text-[#33150d]">
-                {restaurant.emailDisplay}
-              </p>
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
+          <div>
+            <p className="eyebrow">Direct</p>
+            <div className="mt-5 grid gap-3">
+              <a href={`tel:${restaurant.phoneHref}`} className="premium-button flex items-center justify-between border border-[#24140d]/12 bg-[#f7f0e5] p-5 text-[#24140d] hover:bg-white"><span><span className="block text-xs font-black uppercase tracking-[.14em] text-[#8a7464]">Phone</span><span className="mt-1 block text-lg font-black">{restaurant.phoneDisplay}</span></span><span className="text-xl text-[#b73d20]">↗</span></a>
+              <a href={restaurant.whatsappHref} className="premium-button flex items-center justify-between border border-[#24140d]/12 bg-[#f7f0e5] p-5 text-[#24140d] hover:bg-white"><span><span className="block text-xs font-black uppercase tracking-[.14em] text-[#8a7464]">WhatsApp</span><span className="mt-1 block text-lg font-black">Message the restaurant</span></span><span className="text-xl text-[#2e5a4e]">↗</span></a>
             </div>
           </div>
 
-          <div className="interactive-card mt-9 rounded-[1.6rem] border border-white/70 bg-white/88 p-6 text-left shadow-[0_16px_44px_rgba(64,29,18,0.09)] ring-1 ring-amber-950/5">
-            <h2 className="text-2xl font-black text-[#33150d]">
-              Homemade food, simple ordering
-            </h2>
-            <p className="mt-3 text-base font-semibold leading-7 text-[#775036]">
-              Ask about momos, noodles, fried rice, dine-in availability or
-              pickup timing. The team will help you choose something fresh and
-              satisfying.
-            </p>
+          <div>
+            <p className="eyebrow">Social & delivery</p>
+            <h2 className="display-serif mt-4 text-5xl leading-none">Find us online.</h2>
+            <p className="mt-4 max-w-xl text-sm leading-6 text-[#6f5a4b]">Follow for updates or order delivery through Wolt and Bolt Food.</p>
+            <div className="mt-7"><FindUsCards /></div>
           </div>
         </div>
-
-        <div className="mt-10">
-          <div className="mb-5 text-center">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-[#9b341f]">
-              Social and delivery
-            </p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight text-[#33150d]">
-              Find us online
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-base font-semibold leading-7 text-[#775036]">
-              Follow Shanddar MoMo for updates or order delivery through Wolt
-              and Bolt Food.
-            </p>
-          </div>
-          <FindUsCards />
-        </div>
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 }
